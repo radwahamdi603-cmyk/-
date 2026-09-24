@@ -160,8 +160,8 @@ body{margin:0;font-family:'Tajawal',sans-serif;color:var(--ink);min-height:100vh
 const LOGO_SRC = "";
 
 // إعدادات Supabase (من Project Settings > API). استخدمي anon public key فقط.
-const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
-const SUPABASE_ANON_KEY = "YOUR-ANON-PUBLIC-KEY";
+const SUPABASE_URL = "https://msmnncrquohrruwrfgha.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_Nr5WyZYMaQBrj2TvPi9gJw_sSwPs6hS";
 const SUPABASE_TABLE = "mental_health_quiz";
 /* ================================== */
 
@@ -293,10 +293,11 @@ async function saveToSupabase(row){
   if (SUPABASE_URL.includes('YOUR-PROJECT')) throw new Error('Supabase غير مُعدّ بعد');
   const res = await fetch(SUPABASE_URL + '/rest/v1/' + SUPABASE_TABLE, {
     method:'POST',
-    headers:{'Content-Type':'application/json','apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Prefer':'return=minimal'},
+    headers: Object.assign({'Content-Type':'application/json','apikey':SUPABASE_ANON_KEY,'Prefer':'return=minimal'},
+      SUPABASE_ANON_KEY.startsWith('eyJ') ? {'Authorization':'Bearer '+SUPABASE_ANON_KEY} : {}),
     body: JSON.stringify(row)
   });
-  if (!res.ok) throw new Error('HTTP ' + res.status);
+  if (!res.ok){ let t=''; try{ t=await res.text(); }catch(_){} throw new Error('HTTP ' + res.status + ' - ' + t); }
 }
 
 async function submitForm(pct){
@@ -321,7 +322,7 @@ async function submitForm(pct){
     renderCertificate(record);
   }catch(e){
     console.error(e);
-    err.textContent = 'تعذّر إرسال البيانات، تأكدي من الاتصال بالإنترنت وحاولي مرة أخرى.';
+    err.textContent = 'تعذّر إرسال البيانات، تأكدي من الاتصال بالإنترنت وحاولي مرة أخرى. [تفاصيل الخطأ: ' + (e && e.message ? e.message : e) + ']';
     btn.disabled = false; btn.textContent = 'إرسال وإصدار الشهادة';
   }
 }
