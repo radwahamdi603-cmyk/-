@@ -147,14 +147,14 @@ body::after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
 }
 @media print{
   @page{size:A4 landscape;margin:0;}
-  html,body{width:100%;height:100%;min-height:0;margin:0;padding:0;background:#fff !important;overflow:hidden;}
+  html,body{width:297mm;height:210mm;min-height:210mm;margin:0;padding:0;background:#fff !important;overflow:hidden;}
   body::before,body::after{display:none !important;}
   .header,.progress,.pcount,.actions{display:none !important;}
-  .wrap{max-width:none !important;width:100%;margin:0;padding:0;}
-  #stage{width:100%;margin:0;padding:0;}
-  .certificate{width:100%;max-width:none;height:100vh;min-height:100vh;margin:0;padding:0;border-radius:0;box-shadow:none;animation:none;
-    -webkit-print-color-adjust:exact;print-color-adjust:exact;break-before:avoid;break-after:avoid;break-inside:avoid;page-break-before:avoid;page-break-after:avoid;page-break-inside:avoid;}
-  .cert-inner{height:100%;min-height:100%;padding:20px 48px 14px;}
+  .wrap{max-width:none !important;width:297mm;height:210mm;margin:0;padding:0;}
+  #stage{width:297mm;height:210mm;margin:0;padding:0;}
+  .certificate{width:297mm;max-width:none;height:210mm;min-height:210mm;margin:0;padding:0;border-radius:0;box-shadow:none;animation:none;
+    overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact;break-before:avoid;break-after:avoid;break-inside:avoid;page-break-before:avoid;page-break-after:avoid;page-break-inside:avoid;}
+  .cert-inner{width:100%;height:210mm;min-height:210mm;max-height:210mm;padding:20px 48px 14px;overflow:hidden;}
   .cert-logo{width:155px;max-width:32%;margin:-2px auto 0;}
   .cert-title{font-size:2.35rem;margin-top:5px;}
   .cert-sub{margin-bottom:10px;}
