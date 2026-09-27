@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>محطات وعي - صحتك النفسية</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 :root{
   /* ألوان مستوحاة من الرسومات: وردي + أزرق + أخضر + خوخي */
@@ -177,13 +179,13 @@ body::after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
 <div class="header" id="siteHeader">
   <div class="logo-ring" id="logoRing"><img id="logoImg" alt="شعار وحدة تمكين المرأة"></div>
   <div class="badge">محطات وعي</div>
-  <h1>مرحبًا بكِ في المحطة الأولى من «محطات وعي»</h1>
+  <h1>مرحبًا بك في المحطة الأولى من «محطات وعي»</h1>
   <div class="sub">محطة «صحتك النفسية»</div>
   <div class="rule"></div>
-  <p class="intro">اختبري معلوماتك من خلال مجموعة من الأسئلة المتنوعة، واكتشفي مدى معرفتك ببعض المفاهيم المرتبطة بالصحة النفسية والعناية بها.<br>
-  اقرئي كل سؤال جيدًا، ثم اختاري الإجابة التي ترينها صحيحة.</p>
+  <p class="intro">اختبر معلوماتك من خلال مجموعة من الأسئلة المتنوعة، واكتشف مدى معرفتك ببعض المفاهيم المرتبطة بالصحة النفسية والعناية بها.<br>
+  اقرأ كل سؤال جيدًا، ثم اختر الإجابة التي تراها صحيحة.</p>
   <div class="disclaimer">هذه المسابقة للتوعية العامة، ولا تُعد وسيلة للتشخيص النفسي أو بديلًا عن استشارة المختصين.</div>
-  <p class="intro" style="margin-top:12px;font-weight:700;">نتمنى لكِ تجربة مفيدة وممتعة. 💜</p>
+  <p class="intro" style="margin-top:12px;font-weight:700;">نتمنى لك تجربة مفيدة وممتعة. 💜</p>
 </div>
 
 <div class="wrap">
@@ -288,7 +290,7 @@ function renderQuestion(){
     box.appendChild(b);
   });
   card.append(num, qt, box); stage.appendChild(card);
-  const h = document.createElement('div'); h.className='hint'; h.textContent='اختاري إجابتك وسينتقل تلقائيًا للسؤال التالي'; stage.appendChild(h);
+  const h = document.createElement('div'); h.className='hint'; h.textContent='اختر إجابتك وسينتقل تلقائيًا للسؤال التالي'; stage.appendChild(h);
 }
 
 function gradeFor(p){ return p>=90?'ممتاز':p>=75?'جيد جدًا':p>=60?'جيد':'مقبول'; }
@@ -306,28 +308,28 @@ function renderOutro(){
     <p>تؤثر الصحة النفسية في طريقة تفكيرنا وشعورنا وتصرّفاتنا، وفي قدرتنا على التعامل مع ضغوط الحياة والاستفادة من قدراتنا وبناء علاقات إيجابية مع الآخرين.</p>
     <p>ولا تعني الصحة النفسية أن يكون الإنسان سعيدًا طوال الوقت، أو ألّا يشعر بالحزن أو القلق؛ فهذه مشاعر طبيعية يمر بها الجميع. وإنما تعني امتلاك قدر من التوازن والمرونة يساعدنا على فهم مشاعرنا والتعامل معها بصورة صحية.</p>
     <p>وكما نهتم بصحتنا الجسدية، من المهم أن نهتم بصحتنا النفسية، وألّا نتردد في طلب الدعم من شخص موثوق أو من أحد المتخصصين عندما تصبح الضغوط أو المشاعر صعبة أو تؤثر في حياتنا اليومية.</p>
-    <p class="thanks">شكرًا لمشاركتكِ في المحطة الأولى من «محطات وعي».</p>
+    <p class="thanks">شكرًا لمشاركتك في المحطة الأولى من «محطات وعي».</p>
     <p class="quote">تذكّري دائمًا: الوعي بداية الاهتمام… والاهتمام بداية التغيير.</p>
 
     <div class="formbox">
       <h3>بياناتك لإصدار الشهادة</h3>
-      <p class="note">اكتبي بياناتك بدقة، وسيُكتب اسمك في الشهادة كما تدخلينه هنا.</p>
+      <p class="note">اكتب بياناتك بدقة، وسيُكتب اسمك في الشهادة كما تدخله هنا.</p>
       <div class="field"><label for="f_name">الاسم بالكامل *</label><input id="f_name" type="text" autocomplete="name" maxlength="100"></div>
       <div class="row2">
         <div class="field"><label for="f_phone">رقم الموبايل (واتساب) *</label><input id="f_phone" type="tel" inputmode="tel" dir="ltr" style="text-align:right" maxlength="20"></div>
         <div class="field"><label for="f_email">البريد الإلكتروني *</label><input id="f_email" type="email" dir="ltr" style="text-align:right" maxlength="100"></div>
       </div>
       <div class="row2">
-        <div class="field"><label for="f_college">الكلية *</label><select id="f_college"><option value="">اختاري الكلية</option>${COLLEGES.map(c=>`<option>${c}</option>`).join('')}</select></div>
-        <div class="field"><label for="f_branch">الشعبة *</label><select id="f_branch"><option value="">اختاري الشعبة</option><option>بنين</option><option>بنات</option></select></div>
+        <div class="field"><label for="f_college">الكلية *</label><select id="f_college"><option value="">اختر الكلية</option>${COLLEGES.map(c=>`<option>${c}</option>`).join('')}</select></div>
+        <div class="field"><label for="f_branch">الشعبة *</label><select id="f_branch"><option value="">اختر الشعبة</option><option>بنين</option><option>بنات</option></select></div>
       </div>
       <div class="row2">
-        <div class="field" id="f_college_other_wrap" style="display:none"><label for="f_college_other">اسم الكلية *</label><input id="f_college_other" type="text" maxlength="100" placeholder="اكتبي اسم الكلية"></div>
-        <div class="field"><label for="f_year">الفرقة الدراسية *</label><select id="f_year"><option value="">اختاري الفرقة</option>${YEARS.map(c=>`<option>${c}</option>`).join('')}</select></div>
+        <div class="field" id="f_college_other_wrap" style="display:none"><label for="f_college_other">اسم الكلية *</label><input id="f_college_other" type="text" maxlength="100" placeholder="اكتب اسم الكلية"></div>
+        <div class="field"><label for="f_year">الفرقة الدراسية *</label><select id="f_year"><option value="">اختر الفرقة</option>${YEARS.map(c=>`<option>${c}</option>`).join('')}</select></div>
       </div>
       <div class="row2">
-        <div class="field"><label for="f_gov">المحافظة *</label><select id="f_gov"><option value="">اختاري المحافظة</option>${GOVERNORATES.map(c=>`<option>${c}</option>`).join('')}</select></div>
-        <div class="field" id="f_gov_other_wrap" style="display:none"><label for="f_gov_other">اسم المحافظة *</label><input id="f_gov_other" type="text" maxlength="100" placeholder="اكتبي اسم المحافظة"></div>
+        <div class="field"><label for="f_gov">المحافظة *</label><select id="f_gov"><option value="">اختر المحافظة</option>${GOVERNORATES.map(c=>`<option>${c}</option>`).join('')}</select></div>
+        <div class="field" id="f_gov_other_wrap" style="display:none"><label for="f_gov_other">اسم المحافظة *</label><input id="f_gov_other" type="text" maxlength="100" placeholder="اكتب اسم المحافظة"></div>
       </div>
       <div class="err" id="formErr"></div>
       <button class="btn full" id="submitBtn">إرسال وإصدار الشهادة</button>
@@ -361,12 +363,12 @@ async function submitForm(pct){
   const college = collegeSel === 'أخرى' ? collegeOther : collegeSel;
   const governorate = govSel === 'أخرى' ? govOther : govSel;
   const phoneDigits = phone.replace(/[\s\-+()]/g,'');
-  if (name.split(/\s+/).filter(Boolean).length < 2){ err.textContent='من فضلك اكتبي الاسم ثلاثيًا أو رباعيًا.'; return; }
+  if (name.split(/\s+/).filter(Boolean).length < 2){ err.textContent='من فضلك اكتب الاسم ثلاثيًا أو رباعيًا.'; return; }
   if (!/^\d{10,15}$/.test(phoneDigits.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)))){ err.textContent='رقم الموبايل غير صحيح.'; return; }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.textContent='البريد الإلكتروني غير صحيح.'; return; }
-  if (!collegeSel || (collegeSel === 'أخرى' && !collegeOther) || !year){ err.textContent='اختاري الكلية والفرقة الدراسية.'; return; }
-  if (!branch){ err.textContent='اختاري الشعبة (بنين / بنات).'; return; }
-  if (!govSel || (govSel === 'أخرى' && !govOther)){ err.textContent='اختاري المحافظة.'; return; }
+  if (!collegeSel || (collegeSel === 'أخرى' && !collegeOther) || !year){ err.textContent='اختر الكلية والفرقة الدراسية.'; return; }
+  if (!branch){ err.textContent='اختر الشعبة (بنين / بنات).'; return; }
+  if (!govSel || (govSel === 'أخرى' && !govOther)){ err.textContent='اختر المحافظة.'; return; }
   err.textContent='';
 
   const record = { name, phone, email, college, branch, governorate, year, score, total: questions.length, percentage: pct,
@@ -408,7 +410,11 @@ function renderCertificate(r){
   k.appendChild(el('div','cname',r.name));
   k.appendChild(el('div','cert-college', r.college + ' ' + r.branch));
   k.appendChild(el('div','cert-gov', 'محافظة ' + r.governorate));
-  k.appendChild(el('div','desc',`وذلك تقديرًا لمشاركتها الفاعلة في المحطة الأولى «صحتك النفسية» ضمن مبادرة «هي منه وهيا منه»، واهتمامها بتعزيز الوعي بالصحة النفسية، وقد حققت نتيجة ${r.score} من ${r.total} (${r.percentage}٪).`));
+  const isMale = r.branch === 'بنين';
+  const pMeshareka = isMale ? 'مشاركته' : 'مشاركتها';
+  const pEhtemam = isMale ? 'اهتمامه' : 'اهتمامها';
+  const pHaqqaqat = isMale ? 'حقق' : 'حققت';
+  k.appendChild(el('div','desc',`وذلك تقديرًا لـ${pMeshareka} الفاعلة في المحطة الأولى «صحتك النفسية» ضمن مبادرة «هي منه وهيا منه»، و${pEhtemam} بتعزيز الوعي بالصحة النفسية، وقد ${pHaqqaqat} نتيجة ${r.score} من ${r.total} (${r.percentage}٪).`));
   k.appendChild(el('div','grade','التقدير: ' + r.grade));
   const f = el('div','footer');
   const s1 = el('div','sigline'); s1.append(el('div','sig-name',r.date), el('div','sig-title','التاريخ'));
@@ -419,12 +425,27 @@ function renderCertificate(r){
   stage.appendChild(c);
 
   const a = el('div','actions');
-  const pr = el('button','btn','🖨️ طباعة / حفظ PDF');
-  pr.onclick = () => {
-    const originalTitle = document.title;
-    document.title = '';
-    window.print();
-    setTimeout(() => { document.title = originalTitle; }, 1000);
+  const pr = el('button','btn','⬇️ تحميل الشهادة PDF');
+  pr.onclick = async () => {
+    pr.disabled = true; const originalLabel = pr.textContent; pr.textContent = 'جارٍ التجهيز...';
+    try{
+      const target = c; // the .certificate element
+      const canvas = await html2canvas(target, { scale: 3, useCORS: true, backgroundColor: '#fffdf8' });
+      const imgData = canvas.toDataURL('image/jpeg', 0.98);
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+      const pageW = pdf.internal.pageSize.getWidth();
+      const pageH = pdf.internal.pageSize.getHeight();
+      pdf.addImage(imgData, 'JPEG', 0, 0, pageW, pageH);
+      pdf.save('شهادة-' + r.certificate_no + '.pdf');
+    }catch(e){
+      // fallback: normal browser print if PDF generation fails for any reason
+      const originalTitle = document.title; document.title = '';
+      window.print();
+      setTimeout(() => { document.title = originalTitle; }, 1000);
+    }finally{
+      pr.disabled = false; pr.textContent = originalLabel;
+    }
   };
   const wa = el('a','btn btn-outline','📤 مشاركة واتساب');
   wa.href = 'https://wa.me/?text=' + encodeURIComponent('شاركت في محطة «صحتك النفسية» ضمن مبادرة «هي منه وهو منها» - وحدة تمكين المرأة بجامعة الأزهر 💜');
