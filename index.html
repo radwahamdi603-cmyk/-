@@ -127,6 +127,7 @@ body::after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
 .lead{font-size:1rem;color:#4a5a5f;}
 .cname{font-family:'Amiri',serif;font-size:2.3rem;color:#1f5c45;font-weight:700;margin:10px auto 14px;
   border-bottom:2px solid #b8965a;display:table;padding:0 34px 6px;line-height:1.5;}
+.cert-college{font-size:1.05rem;color:#b8965a;font-weight:700;margin:0 auto 10px;}
 .desc{font-size:1.02rem;line-height:2.1;max-width:640px;margin:0 auto 16px;color:#33454b;}
 .grade{display:table;margin:0 auto 18px;background:#1f5c45;color:#fff;font-weight:700;border-radius:22px;padding:7px 30px;
   box-shadow:0 0 0 2px #fffdf8,0 0 0 3.5px #b8965a;}
@@ -147,14 +148,14 @@ body::after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
 }
 @media print{
   @page{size:A4 landscape;margin:0;}
-  html,body{width:297mm;height:210mm;min-height:210mm;margin:0;padding:0;background:#fff !important;overflow:hidden;}
+  html,body{width:100%;height:100%;min-height:0;margin:0;padding:0;background:#fff !important;overflow:hidden;}
   body::before,body::after{display:none !important;}
   .header,.progress,.pcount,.actions{display:none !important;}
-  .wrap{max-width:none !important;width:297mm;height:210mm;margin:0;padding:0;}
-  #stage{width:297mm;height:210mm;margin:0;padding:0;}
-  .certificate{width:297mm;max-width:none;height:210mm;min-height:210mm;margin:0;padding:0;border-radius:0;box-shadow:none;animation:none;
-    overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact;break-before:avoid;break-after:avoid;break-inside:avoid;page-break-before:avoid;page-break-after:avoid;page-break-inside:avoid;}
-  .cert-inner{width:100%;height:210mm;min-height:210mm;max-height:210mm;padding:20px 48px 14px;overflow:hidden;}
+  .wrap{max-width:none !important;width:100%;margin:0;padding:0;}
+  #stage{width:100%;margin:0;padding:0;}
+  .certificate{width:100%;max-width:none;height:100vh;min-height:100vh;margin:0;padding:0;border-radius:0;box-shadow:none;animation:none;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;break-before:avoid;break-after:avoid;break-inside:avoid;page-break-before:avoid;page-break-after:avoid;page-break-inside:avoid;}
+  .cert-inner{height:100%;min-height:100%;padding:20px 48px 14px;}
   .cert-logo{width:155px;max-width:32%;margin:-2px auto 0;}
   .cert-title{font-size:2.35rem;margin-top:5px;}
   .cert-sub{margin-bottom:10px;}
@@ -199,7 +200,7 @@ const LOGO_SRC = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA20AAAObCAYAAADA
 const SUPABASE_URL = "https://msmnncrquohrruwrfgha.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_Nr5WyZYMaQBrj2TvPi9gJw_sSwPs6hS";
 const SUPABASE_TABLE = "mental_health_quiz";
-const COMPETITION_NAME = "محطات وعي - محطة صحتك النفسية";
+const COMPETITION_NAME = "الصحة النفسية";
 /* ================================== */
 
 const questions = [
@@ -222,6 +223,7 @@ const questions = [
  {q:"أيٌّ مما يلي يُعد من علامات العلاقات الإنسانية الصحية؟", opts:["الشعور بالخوف المستمر","السيطرة على الطرف الآخر","التقليل من مشاعر الآخر","الاحترام المتبادل"], correct:3},
 ];
 
+const GOVERNORATES = ["القاهرة","الجيزة","القليوبية","الإسكندرية","الدقهلية","الشرقية","الغربية","المنوفية","كفر الشيخ","البحيرة","دمياط","بورسعيد","الإسماعيلية","السويس","شمال سيناء","جنوب سيناء","بني سويف","الفيوم","المنيا","أسيوط","سوهاج","قنا","الأقصر","أسوان","البحر الأحمر","الوادي الجديد","مطروح","أخرى"];
 const COLLEGES = ["كلية الطب","كلية طب الأسنان","كلية الصيدلة","كلية الهندسة","كلية العلوم","كلية التجارة","كلية الدراسات الإسلامية والعربية","كلية الشريعة والقانون","كلية اللغة العربية","كلية أصول الدين","كلية الدراسات الإنسانية","كلية التمريض","كلية الطب البيطري","كلية الزراعة","كلية التربية","كلية اللغات والترجمة","أخرى"];
 const YEARS = ["الفرقة الأولى","الفرقة الثانية","الفرقة الثالثة","الفرقة الرابعة","الفرقة الخامسة","الفرقة السادسة","دراسات عليا"];
 
@@ -318,10 +320,23 @@ function renderOutro(){
         <div class="field"><label for="f_college">الكلية *</label><select id="f_college"><option value="">اختاري الكلية</option>${COLLEGES.map(c=>`<option>${c}</option>`).join('')}</select></div>
         <div class="field"><label for="f_year">الفرقة الدراسية *</label><select id="f_year"><option value="">اختاري الفرقة</option>${YEARS.map(c=>`<option>${c}</option>`).join('')}</select></div>
       </div>
+      <div class="row2">
+        <div class="field" id="f_college_other_wrap" style="display:none"><label for="f_college_other">اسم الكلية *</label><input id="f_college_other" type="text" maxlength="100" placeholder="اكتبي اسم الكلية"></div>
+        <div class="field"><label for="f_gov">المحافظة *</label><select id="f_gov"><option value="">اختاري المحافظة</option>${GOVERNORATES.map(c=>`<option>${c}</option>`).join('')}</select></div>
+      </div>
+      <div class="row2">
+        <div class="field" id="f_gov_other_wrap" style="display:none"><label for="f_gov_other">اسم المحافظة *</label><input id="f_gov_other" type="text" maxlength="100" placeholder="اكتبي اسم المحافظة"></div>
+      </div>
       <div class="err" id="formErr"></div>
       <button class="btn full" id="submitBtn">إرسال وإصدار الشهادة</button>
     </div>`;
   stage.appendChild(card);
+  document.getElementById('f_college').addEventListener('change', function(){
+    document.getElementById('f_college_other_wrap').style.display = this.value === 'أخرى' ? '' : 'none';
+  });
+  document.getElementById('f_gov').addEventListener('change', function(){
+    document.getElementById('f_gov_other_wrap').style.display = this.value === 'أخرى' ? '' : 'none';
+  });
   document.getElementById('submitBtn').addEventListener('click', () => submitForm(pct));
 }
 
@@ -339,21 +354,25 @@ async function saveToSupabase(row){
 async function submitForm(pct){
   const v = id => document.getElementById(id).value.trim();
   const err = document.getElementById('formErr');
-  const name = v('f_name'), phone = v('f_phone'), email = v('f_email'), college = v('f_college'), year = v('f_year');
+  const name = v('f_name'), phone = v('f_phone'), email = v('f_email'), collegeSel = v('f_college'), year = v('f_year');
+  const collegeOther = v('f_college_other'), govSel = v('f_gov'), govOther = v('f_gov_other');
+  const college = collegeSel === 'أخرى' ? collegeOther : collegeSel;
+  const governorate = govSel === 'أخرى' ? govOther : govSel;
   const phoneDigits = phone.replace(/[\s\-+()]/g,'');
   if (name.split(/\s+/).filter(Boolean).length < 2){ err.textContent='من فضلك اكتبي الاسم ثلاثيًا أو رباعيًا.'; return; }
   if (!/^\d{10,15}$/.test(phoneDigits.replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)))){ err.textContent='رقم الموبايل غير صحيح.'; return; }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.textContent='البريد الإلكتروني غير صحيح.'; return; }
-  if (!college || !year){ err.textContent='اختاري الكلية والفرقة الدراسية.'; return; }
+  if (!collegeSel || (collegeSel === 'أخرى' && !collegeOther) || !year){ err.textContent='اختاري الكلية والفرقة الدراسية.'; return; }
+  if (!govSel || (govSel === 'أخرى' && !govOther)){ err.textContent='اختاري المحافظة.'; return; }
   err.textContent='';
 
-  const record = { name, phone, email, college, year, score, total: questions.length, percentage: pct,
+  const record = { name, phone, email, college, governorate, year, score, total: questions.length, percentage: pct,
     grade: gradeFor(pct), certificate_no: serial(), competition_name: COMPETITION_NAME,
     date: new Date().toLocaleDateString('ar-EG',{year:'numeric',month:'long',day:'numeric'}) };
 
   const btn = document.getElementById('submitBtn'); btn.disabled = true; btn.textContent = 'جارٍ الإرسال...';
   try{
-    await saveToSupabase({ name, phone, email, college, year, score, total: questions.length, percentage: pct, grade: record.grade, certificate_no: record.certificate_no, competition_name: COMPETITION_NAME });
+    await saveToSupabase({ name, phone, email, college, governorate, year, score, total: questions.length, percentage: pct, grade: record.grade, certificate_no: record.certificate_no, competition_name: COMPETITION_NAME });
     renderCertificate(record);
   }catch(e){
     console.error(e);
@@ -384,6 +403,7 @@ function renderCertificate(r){
   k.appendChild(el('div','cert-sub','«محطات وعي» - محطة «صحتك النفسية»'));
   k.appendChild(el('div','lead','تتشرف وحدة تمكين المرأة ودعم تكافؤ الفرص بجامعة الأزهر بمنح هذه الشهادة إلى'));
   k.appendChild(el('div','cname',r.name));
+  k.appendChild(el('div','cert-college', r.college + ' - ' + r.governorate));
   k.appendChild(el('div','desc',`وذلك تقديرًا لمشاركتها الفاعلة في المحطة الأولى «صحتك النفسية» ضمن مبادرة «هي منه وهيا منه»، واهتمامها بتعزيز الوعي بالصحة النفسية، وقد حققت نتيجة ${r.score} من ${r.total} (${r.percentage}٪).`));
   k.appendChild(el('div','grade','التقدير: ' + r.grade));
   const f = el('div','footer');
