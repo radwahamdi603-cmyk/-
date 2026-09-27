@@ -406,7 +406,7 @@ function renderCertificate(r){
   k.appendChild(el('div','cert-sub','«محطات وعي» - محطة «صحتك النفسية»'));
   k.appendChild(el('div','lead','تتشرف وحدة تمكين المرأة ودعم تكافؤ الفرص بجامعة الأزهر بمنح هذه الشهادة إلى'));
   k.appendChild(el('div','cname',r.name));
-  k.appendChild(el('div','cert-college', 'كلية ' + r.college + ' ' + r.branch));
+  k.appendChild(el('div','cert-college', r.college + ' ' + r.branch));
   k.appendChild(el('div','cert-gov', 'محافظة ' + r.governorate));
   k.appendChild(el('div','desc',`وذلك تقديرًا لمشاركتها الفاعلة في المحطة الأولى «صحتك النفسية» ضمن مبادرة «هي منه وهيا منه»، واهتمامها بتعزيز الوعي بالصحة النفسية، وقد حققت نتيجة ${r.score} من ${r.total} (${r.percentage}٪).`));
   k.appendChild(el('div','grade','التقدير: ' + r.grade));
