@@ -173,6 +173,65 @@ body::after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
   .serial{margin-top:8px;}
 }
 </style>
+
+<style id="cert-fix">
+/* ===== Certificate fix: fixed A4 size, readable text, phone layout, clean print/PDF (same approach as the first file) ===== */
+.certificate.cert-fixed{width:1123px!important;max-width:none!important;height:794px!important;min-height:0!important;margin:0 auto!important;padding:0!important;border-radius:0!important;box-shadow:none!important;animation:none!important;}
+.certificate.cert-fixed *{filter:none!important;letter-spacing:0!important;-webkit-font-smoothing:antialiased;}
+.certificate.cert-fixed .cert-inner{width:100%!important;height:794px!important;min-height:0!important;padding:34px 84px 28px!important;box-sizing:border-box!important;}
+.certificate.cert-fixed .content{max-width:none!important;width:100%!important;height:100%!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:space-evenly!important;gap:0!important;}
+.certificate.cert-fixed .content > *{margin:0!important;}
+.certificate.cert-fixed .cert-logo,.certificate.cert-fixed .emblem{width:104px!important;height:104px!important;max-width:none!important;object-fit:contain!important;}
+.certificate.cert-fixed .cert-title{font-size:48px!important;font-weight:700!important;line-height:1.3!important;}
+.certificate.cert-fixed .divider{height:32px!important;}
+.certificate.cert-fixed .cert-sub{font-size:21px!important;font-weight:700!important;line-height:1.5!important;}
+.certificate.cert-fixed .lead{font-size:20px!important;font-weight:500!important;line-height:1.7!important;}
+.certificate.cert-fixed .cname{font-size:42px!important;font-weight:700!important;min-width:0!important;max-width:100%!important;padding:0 26px 4px!important;line-height:1.4!important;overflow-wrap:anywhere!important;}
+.certificate.cert-fixed .cert-college{font-size:23px!important;font-weight:700!important;line-height:1.6!important;}
+.certificate.cert-fixed .cert-gov{font-size:20px!important;font-weight:500!important;line-height:1.5!important;}
+.certificate.cert-fixed .desc{font-size:20px!important;font-weight:500!important;line-height:1.95!important;max-width:880px!important;}
+.certificate.cert-fixed .grade{font-size:21px!important;font-weight:700!important;padding:7px 42px!important;border-radius:999px!important;}
+.certificate.cert-fixed .footer{width:100%!important;display:grid!important;grid-template-columns:1fr 92px 1fr!important;align-items:end!important;gap:40px!important;padding:0 60px!important;}
+.certificate.cert-fixed .sigline{padding-top:6px!important;min-height:0!important;}
+.certificate.cert-fixed .sig-name{font-size:21px!important;font-weight:700!important;line-height:1.45!important;}
+.certificate.cert-fixed .sig-title{font-size:16px!important;color:#4a575b!important;font-weight:500!important;line-height:1.4!important;}
+.certificate.cert-fixed .seal{width:92px!important;height:92px!important;margin:0 auto!important;}
+.certificate.cert-fixed .serial{font-size:15px!important;color:#56656a!important;font-weight:500!important;}
+
+.certificate.cert-mobile{width:100%!important;max-width:560px!important;height:auto!important;min-height:0!important;margin:0 auto!important;padding:0!important;border-radius:0!important;box-shadow:none!important;animation:none!important;}
+.certificate.cert-mobile *{filter:none!important;letter-spacing:0!important;-webkit-font-smoothing:antialiased;}
+.certificate.cert-mobile .cert-inner{width:100%!important;height:auto!important;min-height:0!important;padding:26px 16px 20px!important;box-sizing:border-box!important;}
+.certificate.cert-mobile .content{max-width:none!important;width:100%!important;height:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:11px!important;}
+.certificate.cert-mobile .content > *{margin:0!important;}
+.certificate.cert-mobile .cert-logo,.certificate.cert-mobile .emblem{width:92px!important;height:92px!important;max-width:none!important;object-fit:contain!important;}
+.certificate.cert-mobile .cert-title{font-size:30px!important;font-weight:700!important;line-height:1.3!important;}
+.certificate.cert-mobile .divider{height:26px!important;}
+.certificate.cert-mobile .cert-sub{font-size:16px!important;font-weight:700!important;line-height:1.5!important;}
+.certificate.cert-mobile .lead{font-size:15.5px!important;font-weight:500!important;line-height:1.7!important;}
+.certificate.cert-mobile .cname{font-size:27px!important;font-weight:700!important;min-width:0!important;max-width:100%!important;padding:0 26px 4px!important;line-height:1.4!important;overflow-wrap:anywhere!important;}
+.certificate.cert-mobile .cert-college{font-size:17px!important;font-weight:700!important;line-height:1.6!important;}
+.certificate.cert-mobile .cert-gov{font-size:15.5px!important;font-weight:500!important;line-height:1.5!important;}
+.certificate.cert-mobile .desc{font-size:15.5px!important;font-weight:500!important;line-height:1.95!important;max-width:100%!important;}
+.certificate.cert-mobile .grade{font-size:16px!important;font-weight:700!important;padding:6px 28px!important;border-radius:999px!important;}
+.certificate.cert-mobile .footer{width:100%!important;display:grid!important;grid-template-columns:1fr 58px 1fr!important;align-items:end!important;justify-items:stretch!important;gap:10px!important;padding:0 2px!important;}
+.certificate.cert-mobile .sigline{padding-top:6px!important;min-height:0!important;}
+.certificate.cert-mobile .sig-name{font-size:14px!important;font-weight:700!important;line-height:1.45!important;}
+.certificate.cert-mobile .sig-title{font-size:12px!important;color:#4a575b!important;font-weight:500!important;line-height:1.4!important;}
+.certificate.cert-mobile .seal{order:0!important;width:58px!important;height:58px!important;margin:0 auto!important;}
+.certificate.cert-mobile .serial{font-size:12px!important;color:#56656a!important;font-weight:500!important;}
+
+.cert-scale{position:relative;margin:0 auto;overflow:hidden;border-radius:4px;box-shadow:0 12px 36px rgba(28,88,96,.22);}
+.cert-scale-in{position:absolute;top:0;left:0;width:1123px;height:794px;transform-origin:top left;}
+.actions .btn{flex:1 1 200px;text-align:center;max-width:320px;}
+@media print{
+  html,body{height:auto!important;}
+  .cert-scale{width:1123px!important;height:793px!important;box-shadow:none!important;overflow:hidden!important;margin:0!important;border-radius:0!important;}
+  .cert-scale-in{transform:none!important;height:793px!important;}
+  .certificate.cert-fixed{width:1123px!important;height:793px!important;}
+  .certificate.cert-fixed .cert-inner{height:793px!important;}
+  .actions{display:none!important;}
+}
+</style>
 </head>
 <body>
 
@@ -393,10 +452,11 @@ const lotusG=(a,b)=>`<g><ellipse cx="60" cy="60" rx="10" ry="28" fill="${b}" opa
 const SPRIG=`<svg viewBox="0 0 120 120" fill="none"><path d="M6 114 C30 90 60 60 112 8" stroke="#2b7a82" stroke-width="2" stroke-linecap="round"/><g fill="#5fb3b3"><ellipse cx="28" cy="93" rx="4" ry="11" transform="rotate(-50 28 93)"/><ellipse cx="34" cy="99" rx="4" ry="11" transform="rotate(40 34 99)" fill="#e3a3b7"/><ellipse cx="50" cy="74" rx="4" ry="11" transform="rotate(-50 50 74)"/><ellipse cx="57" cy="79" rx="4" ry="11" transform="rotate(40 57 79)" fill="#e3a3b7"/><ellipse cx="73" cy="53" rx="4" ry="10" transform="rotate(-50 73 53)"/><ellipse cx="80" cy="58" rx="4" ry="10" transform="rotate(40 80 58)" fill="#e3a3b7"/><ellipse cx="95" cy="31" rx="3.5" ry="9" transform="rotate(-50 95 31)"/></g></svg>`;
 const ring=(c)=>`<circle cx="50" cy="50" r="46" fill="#fffdf8" stroke="${c}" stroke-width="2.5"/><circle cx="50" cy="50" r="40" fill="none" stroke="#b8965a" stroke-width="1"/>`;
 
-function renderCertificate(r){
-  header.style.display='none'; progressBar.style.display='none'; pcount.style.display='none';
-  stage.innerHTML=''; stage.parentElement.style.maxWidth='920px';
-  const c = el('div','certificate'), w = el('div','cert-inner'), k = el('div','content');
+const CERT_W = 1123, CERT_H = 794;   // A4 landscape @96dpi (297mm x 210mm)
+
+function buildCert(r, mode){
+  const c = el('div','certificate ' + (mode==='fixed' ? 'cert-fixed' : 'cert-mobile')), w = el('div','cert-inner'), k = el('div','content');
+
   const deco = el('div','deco');
   deco.innerHTML = `<img class="wm" src="${STK.pot}" alt="">`;
   w.append(deco,k); c.appendChild(w);
@@ -422,36 +482,81 @@ function renderCertificate(r){
   const s2 = el('div','sigline'); s2.append(el('div','sig-name','أ.د/ مها أبوشادي'), el('div','sig-title','المدير التنفيذي للوحدة'));
   f.append(s1,seal,s2); k.appendChild(f);
   k.appendChild(el('div','serial','رقم الشهادة: ' + r.certificate_no));
-  stage.appendChild(c);
+  return {c, w, k};
+}
+
+/* If the content is taller than the frame (very long names), shrink it a little so nothing is cut. */
+function fitCert(o){
+  if (!o || !o.w || !o.c.classList.contains('cert-fixed')) return;
+  const k = o.k, w = o.w;
+  k.style.transform = ''; k.style.height = '';
+  const cs = getComputedStyle(w);
+  const avail = w.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+  const need = k.scrollHeight;
+  if (need > avail + 2){
+    const sc = avail / need;
+    k.style.transformOrigin = 'top center';
+    k.style.transform = 'scale(' + sc + ')';
+  }
+}
+
+/* Render the certificate at its fixed A4 size (off-screen) and capture it: same result on every device. */
+async function renderCertCanvas(r){
+  let holder;
+  try{
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    holder = document.createElement('div');
+    holder.id = 'certExportHolder';
+    holder.style.cssText = 'position:absolute;top:0;left:-99999px;width:' + CERT_W + 'px;height:' + CERT_H + 'px;overflow:hidden;';
+    const ex = buildCert(r, 'fixed');
+    holder.appendChild(ex.c); document.body.appendChild(holder);
+    await Promise.all(Array.from(holder.querySelectorAll('img')).map(im => im.decode ? im.decode().catch(()=>{}) : Promise.resolve()));
+    fitCert(ex);
+    await new Promise(res => setTimeout(res, 250));
+    const isMobileDev = /Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent);
+    return await html2canvas(ex.c, {
+      scale: isMobileDev ? 2 : 3, useCORS:true, backgroundColor:'#fffdf8', logging:false,
+      width:CERT_W, height:CERT_H, windowWidth:CERT_W, windowHeight:CERT_H, scrollX:0, scrollY:0, imageTimeout:15000,
+      onclone: doc => { const h = doc.getElementById('certExportHolder'); if (h){ h.style.left='0'; h.style.top='0'; } }
+    });
+  } finally { if (holder) holder.remove(); }
+}
+
+function renderCertificate(r){
+  window.__lastCert = r;
+  header.style.display='none'; progressBar.style.display='none'; pcount.style.display='none';
+  stage.innerHTML=''; stage.parentElement.style.setProperty('max-width','1140px','important');
+
+  const mobile = window.innerWidth <= 700;
+  window.__certMobile = mobile; window.__certScale = null;
+  let o;
+  if (mobile){
+    /* Phone: readable layout on screen. The PDF is still exported as fixed A4 landscape. */
+    o = buildCert(r, 'mobile'); stage.appendChild(o.c);
+  } else {
+    o = buildCert(r, 'fixed');
+    const sw = el('div','cert-scale'), si = el('div','cert-scale-in');
+    si.appendChild(o.c); sw.appendChild(si); stage.appendChild(sw);
+    const applyScale = () => {
+      const sc = Math.min(1, (stage.clientWidth || CERT_W) / CERT_W);
+      si.style.transform = 'scale(' + sc + ')';
+      sw.style.width = (CERT_W * sc) + 'px'; sw.style.height = (CERT_H * sc) + 'px';
+    };
+    applyScale(); window.__certScale = applyScale;
+  }
+  fitCert(o);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fitCert(o));
 
   const a = el('div','actions');
   const pr = el('button','btn','⬇️ تحميل الشهادة PDF');
+  const im = el('button','btn btn-outline','🖼️ حفظ كصورة');
   pr.onclick = async () => {
-    pr.disabled = true; const originalLabel = pr.textContent; pr.textContent = 'جارٍ التجهيز...';
-    const target = c; // the .certificate element
-    // Save original inline styles so we can restore the on-screen look afterwards
-    const prevStyle = target.getAttribute('style') || '';
-    const prevInnerStyle = w.getAttribute('style') || '';
+    pr.disabled = true; im.disabled = true; const originalLabel = pr.textContent; pr.textContent = 'جارٍ التجهيز...';
     try{
-      // Temporarily reshape the certificate to exact A4-landscape proportions
-      // so it can fill the whole PDF page with no distortion and no empty margins.
-      const CAP_W = 1600, CAP_H = Math.round(CAP_W * 210 / 297); // A4 landscape ratio (297x210mm)
-      target.style.width = CAP_W + 'px';
-      target.style.height = CAP_H + 'px';
-      target.style.maxWidth = 'none';
-      target.style.margin = '0';
-      target.style.borderRadius = '0';
-      target.style.boxShadow = 'none';
-      w.style.height = '100%';
-      w.style.minHeight = '100%';
-      await new Promise(res => setTimeout(res, 50)); // let layout settle
-      const canvas = await html2canvas(target, { scale: 3, useCORS: true, backgroundColor: '#fffdf8', width: CAP_W, height: CAP_H });
-      const imgData = canvas.toDataURL('image/png');
+      const canvas = await renderCertCanvas(r);
       const { jsPDF } = window.jspdf;
-      const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
-      const pageW = pdf.internal.pageSize.getWidth();
-      const pageH = pdf.internal.pageSize.getHeight();
-      pdf.addImage(imgData, 'PNG', 0, 0, pageW, pageH);
+      const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4', compress: true });
+      pdf.addImage(canvas.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, 297, 210, undefined, 'FAST');
       pdf.save('شهادة-' + r.certificate_no + '.pdf');
     }catch(e){
       // fallback: normal browser print if PDF generation fails for any reason
@@ -459,16 +564,44 @@ function renderCertificate(r){
       window.print();
       setTimeout(() => { document.title = originalTitle; }, 1000);
     }finally{
-      target.setAttribute('style', prevStyle);
-      w.setAttribute('style', prevInnerStyle);
-      pr.disabled = false; pr.textContent = originalLabel;
+      pr.disabled = false; im.disabled = false; pr.textContent = originalLabel;
     }
   };
+  im.onclick = async () => {
+    pr.disabled = true; im.disabled = true; const oldLabel = im.textContent; im.textContent = 'جارٍ التجهيز...';
+    try{
+      const canvas = await renderCertCanvas(r);
+      await new Promise(res => canvas.toBlob(b => {
+        const url = URL.createObjectURL(b);
+        const l = document.createElement('a'); l.href = url; l.download = 'شهادة-' + r.certificate_no + '.png';
+        document.body.appendChild(l); l.click(); l.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 4000); res();
+      }, 'image/png'));
+    }catch(e){
+      console.error(e);
+      alert('حصلت مشكلة أثناء تجهيز الصورة، جرّب مرة تانية.');
+    }finally{
+      pr.disabled = false; im.disabled = false; im.textContent = oldLabel;
+    }
+  };
+
   const wa = el('a','btn btn-outline','📤 مشاركة واتساب');
   wa.href = 'https://wa.me/?text=' + encodeURIComponent('شاركت في محطة «صحتك النفسية» ضمن مبادرة «هي منه وهو منها» - وحدة تمكين المرأة بجامعة الأزهر 💜');
   wa.target='_blank'; wa.rel='noopener noreferrer';
-  a.append(pr, wa); stage.appendChild(a);
+  a.append(pr, im, wa); stage.appendChild(a);
 }
+
+/* Re-render when the phone is rotated / window is resized across the phone breakpoint. */
+let __rsT;
+window.addEventListener('resize', () => {
+  if (!window.__lastCert) return;
+  clearTimeout(__rsT);
+  __rsT = setTimeout(() => {
+    const nowMobile = window.innerWidth <= 700;
+    if (nowMobile !== window.__certMobile) renderCertificate(window.__lastCert);
+    else if (window.__certScale) window.__certScale();
+  }, 150);
+});
 
 renderQuestion();
 </script>
